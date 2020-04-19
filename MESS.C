@@ -58,3 +58,26 @@ void allocation(struct mess list[50],int p)      //allocation of proccesss.
 		}
 	}
 }
+void waiting_time(struct mess list[50], int p)    // calculating waiting time.
+{
+	int k;
+    list[0].w_time=0;
+    for(k=1;k<p;k++)
+    {
+        list[k].w_time=list[k-1].w_time+list[k-1].b_time;   // WaitingTime=WaitingTime(Previous)+BurstTime.
+    }
+}
+
+
+
+
+
+void turn_aroundtime(struct mess list[50], int p)  // calculating TurnAroundTime.
+{
+	int k;
+    
+    for(k=0;k<p;k++)
+    {
+        list[k].ta_time=list[k].w_time+list[k].b_time;     // TrunAroundTime = WaitingTime + BurstTime.
+    }
+}
