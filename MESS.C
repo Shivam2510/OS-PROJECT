@@ -101,3 +101,27 @@ void showdata(struct mess list[50],int p)  //Displaying output onto the moniter.
 	printf("\n\t\t\t\tTotal Turn around Time: %d",Total_tat);
 	printf("\n\t\t\t\tAverage Turn around Time: %d\n\n",Total_tat/p);
 }
+int main()                         // MAin Fuction where all function called.
+{
+    struct mess arr[20];
+    int s,i;
+    char c='s';
+    do
+	{
+    printf("Please enter the No. of proccess : ");
+    scanf("%d", &s);
+    	if(s<=0)
+		{
+			printf("Student should be greater then zero");
+			exit(0);
+		}
+    getdata(arr, s);
+    allocation(arr, s);
+    waiting_time(arr,s);
+    turn_aroundtime(arr,s);
+    showdata(arr, s);
+    printf("Want to continue? press 'y' : ");
+    scanf("%s",&c);
+    }while(c=='y');
+    return 0;
+} 
