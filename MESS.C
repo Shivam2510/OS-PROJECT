@@ -32,3 +32,29 @@ void getdata(struct mess list[50],int p)    // taking data from the user.
 		
 	}
 }
+void allocation(struct mess list[50],int p)      //allocation of proccesss.
+{
+	int j,k;
+	struct mess q;
+	for (j=0; j<p-1;j++)
+    {
+        for (k=0; k<(p-1-j); k++)
+        {
+        	 if (list[k].b_time < list[k+1].b_time)     // if burst time first is less than next proccess.
+            {
+                q = list[k];
+                list[k] = list[k+1];
+                list[k+1] = q;
+            } 
+            else if(list[k].b_time== list[k+1].b_time)  // if both proccess have same burst time then allocation depend on process id.
+            {
+            	if(list[k].s_id> list[k+1].s_id)       // allocation depend on proccess id.
+            	{
+            	q= list[k];
+                list[k] = list[k+1];
+                list[k+1] = q;
+                }
+			}
+		}
+	}
+}
