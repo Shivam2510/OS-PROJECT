@@ -81,3 +81,23 @@ void turn_aroundtime(struct mess list[50], int p)  // calculating TurnAroundTime
         list[k].ta_time=list[k].w_time+list[k].b_time;     // TrunAroundTime = WaitingTime + BurstTime.
     }
 }
+void showdata(struct mess list[50],int p)  //Displaying output onto the moniter.
+{
+	int j,Avg_wt=0,Avg_tat=0;
+	int Total_wt=0,Total_tat=0;
+	printf("\n\n\n\t\t\tOutput by using LRTF\n");
+    printf("\n\t\t\t\t|***************************************************************|");
+    printf("\n\t\t\t\t|Procsess id\tBurst Time\tWaiting Time\tTurn Around Time|");
+    printf("\n\t\t\t\t|***************************************************************|");  
+     for (j=0; j<p;j++)
+    {
+        printf("\n\t\t\t\t\t%d\t\t%d\t\t%d\t\t%d\t\t", list[j].s_id, list[j].b_time,list[j].w_time,list[j].ta_time);
+        printf("\a\n\t\t\t\t*****************************************************************");
+		Total_wt= Total_wt+list[j].w_time;       // total sum of Waiting Time.
+		Total_tat= Total_tat+list[j].ta_time;   // total sum of Turn Around Time.
+	} 
+	printf("\n\n\t\t\t\tTotal Waiting Time: %d",Total_wt);
+	printf("\n\t\t\t\tAverage Waiting Time: %d\n\n",Total_wt/p);
+	printf("\n\t\t\t\tTotal Turn around Time: %d",Total_tat);
+	printf("\n\t\t\t\tAverage Turn around Time: %d\n\n",Total_tat/p);
+}
